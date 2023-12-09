@@ -1,0 +1,38 @@
+{
+  "name": "vite-svelte-azle",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "setup": "npm i && dfx canister create backend && dfx generate backend && dfx deploy",
+    "start": "run-p frontend",
+    "frontend": "vite --port 3000",
+    "backend": "dfx deploy backend",
+    "build": "vite build",
+    "pretest:backend": "AZLE_REBUILD=true ts-node -P tsconfig.node.json --transpile-only --ignore=false backend/tests/pretest.ts",
+    "test:backend": "AZLE_REBUILD=true ts-node -P tsconfig.node.json --transpile-only --ignore=false backend/tests/test.ts",
+    "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
+  },
+  "dependencies": {
+    "@dfinity/auth-client": "^0.18.1",
+    "@dfinity/identity": "^0.18.1",
+    "azle": "0.18.6"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "@tsconfig/svelte": "^5.0.1",
+    "cross-fetch": "^3.1.6",
+    "dotenv": "^16.3.1",
+    "jsdom": "^22.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.8",
+    "sass": "^1.63.6",
+    "svelte": "^4.0.5",
+    "svelte-check": "^3.4.6",
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-environment": "^1.1.3",
+    "vitest": "^0.32.2"
+  }
+}
